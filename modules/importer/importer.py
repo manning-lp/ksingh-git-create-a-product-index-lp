@@ -25,10 +25,11 @@ def import_shoes_from_file(file_name):
     :param file_name: The name of the file to import shoes from.
     :return:
     """
-    logging.info(f'Start importing shoes from the file: {file_name}')
-    
     index_name = create_elasticsearch_index()
-    # TODO: Implement this part of the function function
-
-    # To here
+    _do_import_shoes_from_file(file_name=file_name, index_name=index_name)
     switch_alias_to(index_name)
+
+
+def _do_import_shoes_from_file(file_name, index_name):
+    logging.info(f'Start importing shoes from the file: {file_name} into index {index_name}')
+    # TODO: Implement this part of the function function
