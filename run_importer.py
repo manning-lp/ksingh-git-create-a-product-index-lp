@@ -8,7 +8,7 @@ SOURCE_PATH = os.path.join(
 )
 sys.path.append(SOURCE_PATH)
 
-from importer import verify_connection, refresh_index, import_shoes_from_file
+from importer import verify_connection, import_shoes_from_file
 from dotenv import load_dotenv
 from logging import config
 from log_config import logging_config
@@ -23,6 +23,5 @@ run_logging = logging.getLogger("runner")
 if __name__ == '__main__':
     run_logging.info('Started the importer')
     verify_connection()
-    refresh_index('./config/shoes_index.json')
     import_shoes_from_file(file_name='./data/shoes.mjson')
     run_logging.info('Finished the importer')

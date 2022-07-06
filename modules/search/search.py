@@ -20,13 +20,34 @@ def get_elasticsearch_health():
     return health
 
 
-def create_elasticsearch_index(index_body):
+def create_elasticsearch_index():
     """
-    Create a new index using the provided index configuration. Name of the index is a combination of the configured
-    ALIAS_NAME and a time stamp in the format of YearMonthDayHourMinuteSecond. Before the index is created, a check is
-    done for an existing alias. If the alias exists, it is thrown away. After the index is created, a new Alias is
-    created to that specific index.
-    :param index_body: JSON object containing the index configuration (mapping and settings)
-    :return: The result of the alias creation
+    Create a new index. Name of the index is a combination of the configured ALIAS_NAME and a time stamp in the format
+    of YearMonthDayHourMinuteSecond. Before the index is created, we remove it if it already exists. The settings
+    and mappings are obtained from the shoes_index.json in the config folder.
+    :return: The name of the created index
     """
-    search_log(f'Creating a new index with the name TODO')
+    search_log.info(f'Creating a new index with the name TODO')
+    # TODO: Implement this function
+
+
+def index_shoe(shoe, index_name):
+    """
+    Send the provided shoe to Elasticsearch to index that shoe into the provided index.
+    :param shoe: The Shoe to index
+    :param index_name: The index to use for indexing the shoe
+    :return:
+    """
+    search_log.info(f'Indexing shoe: {shoe["id"]} into index with name {index_name}')
+    # TODO: Implement this function
+
+
+def switch_alias_to(index_name):
+    """
+    Checks if the alias as configured is already available, if so, remove all indexes it points to. When finished add
+    the provided index to the alias.
+    :param index_name: Name of the index to assign to the alias
+    :return:
+    """
+    search_log.info(f'Assign alias {ALIAS_NAME} to {index_name}')
+    # TODO: Implement this function
