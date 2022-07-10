@@ -5,6 +5,7 @@
     "number_of_shards": 1
   },
   "mappings": {
+    "dynamic": "strict",
     "properties": {
     }
   }
