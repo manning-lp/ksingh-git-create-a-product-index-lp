@@ -28,7 +28,7 @@ def create_elasticsearch_index():
     :return: The name of the created index
     """
     search_log.info(f'Creating a new index with the name TODO')
-    # TODO: Implement this function
+    # TODO M3: Implement this function
 
 
 def index_shoe(shoe, index_name):
@@ -39,7 +39,7 @@ def index_shoe(shoe, index_name):
     :return:
     """
     search_log.info(f'Indexing shoe: {shoe["id"]} into index with name {index_name}')
-    # TODO: Implement this function
+    # TODO M2: Implement this function
 
 
 def switch_alias_to(index_name):
@@ -50,4 +50,4 @@ def switch_alias_to(index_name):
     :return:
     """
     search_log.info(f'Assign alias {ALIAS_NAME} to {index_name}')
-    # TODO: Implement this function
+    # TODO M3: Implement this function
