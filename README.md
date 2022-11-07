@@ -7,11 +7,13 @@ The initial setup of the project contains the files you need to run the complete
 - data/shoes.mjson:  Contains a valid json document on each line representing one shoe per line.
 - infra/docker-compose.yml: A Docker compose file for the containers running Elasticsearch and Kibana. Both contains expose an http port. That way you can use your browser against _localhost_ to interact with the containers.
 - infra/.env: Specifies the version of Elasticsearch and Kibana to use
+- modules/importer/importer.py: code to handle importing the sneaker data
+- modules/search/search.py: code to interact with Elasticsearch
+- modules/log_config.py: configures the logging system in our python project
 - Dockerfile-importer: Docker specification file to run the importer using Docker
 - README.md: This file
 - requirements.txt: Contains the libraries used by this project. Use this to setup your local python environment
 - run_importer.py: Used by the Docker container, but also possible to use from your local python environment to run the importer
-- run_service.py: Used by the Docker container, but also possible to use from your local python environment to run the service
 
 ## Running the project
 ### Running Elasticsearch and Kibana
