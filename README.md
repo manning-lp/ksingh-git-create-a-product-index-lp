@@ -1,5 +1,5 @@
-# import-sneakers-into-elasticsearch-lp-author
-Repository for liveProject: Import Sneakers into Elasticsearch
+# create-a-product-index-lp-author
+Repository for liveProject: Create a Product Index
 
 ## Contents
 The initial setup of the project contains the files you need to run the complete setup:
