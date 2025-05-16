@@ -6,7 +6,7 @@ import logging
 search_log = logging.getLogger("search")
 
 ALIAS_NAME = "sneakers"
-HOST = os.environ.get('ELASTICSEARCH_HOST', 'http://localhost:9200')
+HOST = os.environ.get("ELASTICSEARCH_HOST", "http://localhost:9200")
 es = Elasticsearch(hosts=[HOST])
 
 
@@ -27,7 +27,7 @@ def create_elasticsearch_index():
     and mappings are obtained from the shoes_index.json in the config folder.
     :return: The name of the created index
     """
-    search_log.info(f'Creating a new index with the name TODO')
+    search_log.info(f"Creating a new index with the name TODO")
     # TODO M3: Implement this function
 
 
@@ -40,6 +40,8 @@ def index_shoe(shoe, index_name):
     """
     search_log.info(f'Indexing shoe: {shoe["id"]} into index with name {index_name}')
     # TODO M2: Implement this function
+    res = es.index(index=index_name, document=shoe)
+    print(res["result"])
 
 
 def switch_alias_to(index_name):
@@ -49,5 +51,5 @@ def switch_alias_to(index_name):
     :param index_name: Name of the index to assign to the alias
     :return:
     """
-    search_log.info(f'Assign alias {ALIAS_NAME} to {index_name}')
+    search_log.info(f"Assign alias {ALIAS_NAME} to {index_name}")
     # TODO M3: Implement this function
