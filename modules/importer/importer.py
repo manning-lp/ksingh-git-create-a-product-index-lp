@@ -1,5 +1,11 @@
-from search import get_elasticsearch_health, create_elasticsearch_index, index_shoe, switch_alias_to
+from search import (
+    get_elasticsearch_health,
+    create_elasticsearch_index,
+    index_shoe,
+    switch_alias_to,
+)
 from bs4 import BeautifulSoup
+from pprint import pprint
 
 import json
 import logging
@@ -31,5 +37,15 @@ def import_shoes_from_file(file_name):
 
 
 def _do_import_shoes_from_file(file_name, index_name):
-    logging.info(f'Start importing shoes from the file: {file_name} into index {index_name}')
-    # TODO: Implement this part of the function function
+    logging.info(
+        f"Start importing shoes from the file: {file_name} into index {index_name}"
+    )
+    with open(file_name, "r") as file:
+        file_content = file.readlines()
+        for line in file_content:
+            json_line = json.loads(line)
+            index_shoe(json_line, json_line["id"])
+            soup = BeautifulSoup(json_line["description"], "html.parser")
+            json_line["description"] = soup.get_text()
+
+        print(f"Number of shoes to import: {len(file_content)}")
