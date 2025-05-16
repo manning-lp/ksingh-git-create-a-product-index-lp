@@ -44,8 +44,8 @@ def _do_import_shoes_from_file(file_name, index_name):
         file_content = file.readlines()
         for line in file_content:
             json_line = json.loads(line)
-            index_shoe(json_line, json_line["id"])
             soup = BeautifulSoup(json_line["description"], "html.parser")
             json_line["description"] = soup.get_text()
+            index_shoe(json_line, json_line["id"])
 
         print(f"Number of shoes to import: {len(file_content)}")
