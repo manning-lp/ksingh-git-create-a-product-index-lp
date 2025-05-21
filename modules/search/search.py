@@ -1,8 +1,9 @@
 import json
-from elasticsearch import Elasticsearch
+from elasticsearch import Elasticsearch, helpers
 from datetime import datetime
 import os
 import logging
+from bs4 import BeautifulSoup
 
 search_log = logging.getLogger("search")
 
@@ -92,4 +93,38 @@ def switch_alias_to(index_name):
     except Exception as e:
         print(f"Failed to update alias: {e}")
     search_log.info(f"Alias {ALIAS_NAME} now points to {index_name}")
+    return True
+
+
+def do_import_shoes_from_file_in_bulk(file_name, index_name):
+    """
+    Import shoes from a file containing a shoe on each line. Use the index_shoe function of the search module to index
+    :param file_name: The name of the file to import shoes from.
+    :param index_name: The name of the index to import shoes into.
+    """
+    with open(file_name, "r") as file:
+        shoes = []
+        file_content = file.readlines()
+        for line in file_content:
+            json_line = json.loads(line)
+            soup = BeautifulSoup(json_line["description"], "html.parser")
+            json_line["description"] = soup.get_text()
+            shoes.append(json_line)
+
+    search_log.info(
+        f"Bulk indexing {len(shoes)} shoes into index with name {index_name}"
+    )
+    actions = [
+        {
+            "_op_type": "index",
+            "_index": index_name,
+            "_id": shoe["id"],
+            "_source": shoe,
+        }
+        for shoe in shoes
+    ]
+    helpers.bulk(es, actions)
+    search_log.info(
+        f"Bulk indexed {len(shoes)} shoes into index with name {index_name}"
+    )
     return True

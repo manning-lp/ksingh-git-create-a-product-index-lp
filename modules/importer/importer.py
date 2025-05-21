@@ -3,6 +3,7 @@ from search import (
     create_elasticsearch_index,
     index_shoe,
     switch_alias_to,
+    do_import_shoes_from_file_in_bulk,
 )
 from bs4 import BeautifulSoup
 from pprint import pprint
@@ -32,7 +33,8 @@ def import_shoes_from_file(file_name):
     :return:
     """
     index_name = create_elasticsearch_index()
-    _do_import_shoes_from_file(file_name=file_name, index_name=index_name)
+    # _do_import_shoes_from_file(file_name=file_name, index_name=index_name)
+    do_import_shoes_from_file_in_bulk(file_name=file_name, index_name=index_name)
     switch_alias_to(index_name)
 
 
