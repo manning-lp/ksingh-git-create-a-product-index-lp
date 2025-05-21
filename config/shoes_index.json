@@ -7,6 +7,51 @@
   "mappings": {
     "dynamic": "strict",
     "properties": {
+      "id": {
+        "type": "keyword"
+      },
+      "name": {
+        "type": "keyword"
+      },
+      "product_url": {
+        "type": "text"
+      },
+      "sale": {
+        "type": "boolean"
+      },
+      "brand": {
+        "type": "keyword"
+      },
+      "color": {
+        "type": "keyword"
+      },
+      "gender": {
+        "type": "keyword"
+      },
+      "sport": {
+        "type": "keyword"
+      },
+      "closure": {
+        "type": "keyword"
+      },
+      "search_color": {
+        "type": "keyword"
+      },
+      "base_material": {
+        "type": "keyword"
+      },
+      "product_type": {
+        "type": "keyword"
+      },
+      "price": {
+        "type": "integer"
+      },
+      "description": {
+        "type": "keyword"
+      },
+      "usps": {
+        "type": "keyword"
+      }
     }
   }
 }
