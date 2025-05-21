@@ -1,0 +1,12 @@
+GET _cat/indices?v
+GET _alias/sneakers
+GET /sneakers_20250521164259/_mapping
+GET /sneakers_20250521164259/_settings
+GET /sneakers_20250521164259/_search
+{
+  "query": {
+    "match_all": {
+      "_name": "superstar"
+    }
+  }
+}
